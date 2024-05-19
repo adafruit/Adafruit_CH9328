@@ -8,8 +8,10 @@
 Adafruit_CH9328 keyboard;
 
 // Uncomment these lines if you need to use SoftwareSerial because there's no Serial1 device
-//#include <SoftwareSerial.h>
-//SoftwareSerial Serial1(3, 2); // RX, TX pins
+#if defined(__AVR_ATmega328P__)
+  #include <SoftwareSerial.h>
+  SoftwareSerial Serial1(3, 2); // RX, TX pins
+#endif
 
 void setup() {
   // Start the debug serial port, wait till it opens
